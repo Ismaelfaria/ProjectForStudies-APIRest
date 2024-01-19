@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using ProjetoParaEstudo.Entity;
 using ProjetoParaEstudo.Persistence;
@@ -16,17 +16,19 @@ namespace ProjetoParaEstudo.Controllers
             _context = context;
         }
 
+
+
         [HttpGet]
         public IActionResult GetAll()
         {
-            var devEvents = _context.devEvent.Where(d => !d.IsDeleted).ToList();
-            return Ok(devEvents);
+            var devEvent = _context.DevEvent.Where(de => !de.IsDeleted).ToList();
+            return Ok(devEvent);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(Guid id)
         {
-            var devEvent = _context.devEvent.SingleOrDefault(d => d.Id == id);
+            var devEvent = _context.DevEvent.SingleOrDefault(de => de.Id == id);
 
             if(devEvent == null)
             {
@@ -37,11 +39,12 @@ namespace ProjetoParaEstudo.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(DevEvent devEvents)
+        public IActionResult Post(DevEvent devEvent)
         {
-            _context.devEvent.Add(devEvents);
+            _context.DevEvent.Add(devEvent);
+            _context.SaveChanges();
 
-            return CreatedAtAction(nameof(GetById), new { id = devEvents.Id }, devEvents);
+            return CreatedAtAction(nameof(GetById), new { id = devEvent.Id }, devEvent);
         }
 
     }
