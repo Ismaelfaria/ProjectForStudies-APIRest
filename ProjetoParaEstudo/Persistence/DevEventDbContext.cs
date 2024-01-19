@@ -22,7 +22,7 @@ namespace ProjetoParaEstudo.Persistence
                 e.HasKey(d => d.Id);
 
                 e.Property(d => d.Title)
-                .HasColumnName("Titulos")
+                .HasColumnName("Titulos");
              
 
                 e.Property(d => d.Description) 
