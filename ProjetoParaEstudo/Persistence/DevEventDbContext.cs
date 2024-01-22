@@ -6,10 +6,7 @@ namespace ProjetoParaEstudo.Persistence
     public class DevEventDbContext : DbContext
     {
 
-        public DevEventDbContext(DbContextOptions<DevEventDbContext> options) : base(options)
-        {
-            
-        }
+        public DevEventDbContext(DbContextOptions<DevEventDbContext> options) : base(options){}
 
         public DbSet<DevEvent> DevEvent { get; set; }
 
@@ -19,11 +16,12 @@ namespace ProjetoParaEstudo.Persistence
             {
                 e.ToTable("Dev_Events");
 
+                e.ToTable("Dev_Events");
+
                 e.HasKey(d => d.Id);
 
                 e.Property(d => d.Title)
                 .HasColumnName("Titulos");
-             
 
                 e.Property(d => d.Description) 
                 .HasColumnName("Descrição");
@@ -38,6 +36,5 @@ namespace ProjetoParaEstudo.Persistence
                 .HasColumnName("Foi cancelado");
             });
         }
-
     }
 }

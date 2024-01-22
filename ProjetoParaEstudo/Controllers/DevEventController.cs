@@ -1,6 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoParaEstudo.Entity;
 using ProjetoParaEstudo.Persistence;
 
@@ -70,7 +68,7 @@ namespace ProjetoParaEstudo.Controllers
         {
             var devEvent = _context.DevEvent.SingleOrDefault(d => d.Id == id);
 
-            if(DevEvent == null)
+            if(devEvent == null)
             {
                 return NotFound();
             }
@@ -80,7 +78,5 @@ namespace ProjetoParaEstudo.Controllers
 
             return NoContent();
         }
-
-
     }
 }
